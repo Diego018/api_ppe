@@ -58,77 +58,62 @@ json
 
 ## Estructura del proyecto y dependencias
 
-api_ppe/
-│
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-│
-├── src/
-│   ├── main/
-│   │   ├── java/com/diego/api/
-│   │   │   ├── controller/
-│   │   │   │   └── StudentController.java
-│   │   │   ├── entity/
-│   │   │   │   └── Student.java
-│   │   │   ├── repository/
-│   │   │   │   └── IStudentRepository.java
-│   │   │   ├── service/
-│   │   │   │   └── StudentService.java
-│   │   │   └── ApiApplication.java
-│   │   └── resources/
-│   │       └── application.properties
-│   └── test/
-│       └── java/com/diego/api/
-│           └── ApiApplicationTests.java
-│
-├── build.gradle
-├── settings.gradle
-├── gradlew
-├── gradlew.bat
-└── README.md
+La carpeta raíz api_ppe/ contiene:
 
+.github/workflows/ci.yml - Archivo de configuración del pipeline de GitHub Actions
+
+src/ - Código fuente de la aplicación
+
+main/ - Código principal
+
+java/com/diego/api/ - Paquete base de la aplicación
+
+controller/StudentController.java - Controlador REST con los endpoints
+
+entity/Student.java - Entidad que representa al estudiante
+
+repository/IStudentRepository.java - Repositorio JPA para persistencia
+
+service/StudentService.java - Servicio con la lógica de negocio
+
+ApiApplication.java - Clase principal para ejecutar la aplicación
+
+resources/application.properties - Configuración de base de datos y JPA
+
+test/ - Código de pruebas
+
+java/com/diego/api/ApiApplicationTests.java - Pruebas unitarias
+
+build.gradle - Archivo con plugins y dependencias
+
+settings.gradle - Configuración del proyecto Gradle
+
+gradlew - Wrapper de Gradle para Linux/Mac
+
+gradlew.bat - Wrapper de Gradle para Windows
+
+README.md - Documentación del proyecto
 ### build.gradle
 
-plugins {
-    id 'java'
-    id 'org.springframework.boot' version '4.0.2'
-    id 'io.spring.dependency-management' version '1.1.7'
-}
+El archivo build.gradle contiene los siguientes plugins:
 
-group = 'com.diego'
-version = '0.0.1-SNAPSHOT'
+id 'java' - Plugin base de Java para compilación
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
-    }
-}
+id 'org.springframework.boot' version '4.0.2' - Plugin de Spring Boot que permite empaquetar y ejecutar la aplicación
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
+id 'io.spring.dependency-management' version '1.1.7' - Plugin que gestiona automáticamente las versiones de las dependencias de Spring
 
-repositories {
-    mavenCentral()
-}
+Y las siguientes dependencias:
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.mysql:mysql-connector-j'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
+implementation 'org.springframework.boot:spring-boot-starter-data-jpa' - Dependencia para persistencia con JPA y Hibernate
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
+implementation 'org.springframework.boot:spring-boot-starter-web' - Dependencia para crear APIs REST
+
+compileOnly 'org.projectlombok:lombok' - Lombok para reducir código boilerplate (getters, setters, constructores)
+
+runtimeOnly 'com.mysql:mysql-connector-j' - Conector JDBC para MySQL
+
+testImplementation 'org.springframework.boot:spring-boot-starter-test' - Dependencia para pruebas unitarias e integración
 
 ### Justificación de la Estrategia de Git: GitFlow vs Trunk-Based
 Estrategia elegida: GitFlow
