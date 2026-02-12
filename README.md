@@ -40,12 +40,13 @@ spring.jpa.properties.hibernate.format_sql=true
 Podemos probar los endpoints ya sea en la herramienta "Postman" o en alguna otra que pruebe APIs
 
 
-Método	Endpoint	Descripción
-GET	/students	Listar todos los estudiantes
-GET	/students/{id}	Buscar por ID
-POST	/students	Crear estudiante
-PUT	/students/{id}	Actualizar
-DELETE	/students/{id}	Eliminar
+|  Método | Endpoint  | Descripción  |
+|---|---|---|
+| GET  | 	/students  | Listar todos los estudiantes  |
+|  GET |  	/students/{id} |  	Buscar por ID |
+|  POST | 	/students  | 	Crear estudiante  |
+| PUT  | /students/{id}  | 	Actualizar  |
+|  DELETE |  /students/{id} | Eliminar  |
 
 ### Ejemplo POST:
 
